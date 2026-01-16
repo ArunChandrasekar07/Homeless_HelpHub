@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homeless Help Hub - Ultimate Interface</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #eef2f7, #dbeafe);
+    overflow-x: hidden;
+  }
+footer {
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.1); /* semi-transparent */
+}
+#footer-watermark {
+        position: fixed;
+        bottom: 12px;
+        right: 20px;
+        font-family: 'Palatino Linotype', 'Georgia', serif;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 500;
+        color: rgba(0,0,0,0.2);
+        letter-spacing: 0.7px;
+        text-shadow: 0 0 1px rgba(0,0,0,0.1);
+        pointer-events: none;
+        user-select: none;
+        z-index: 9999;
+        text-align: right;
+    }
+
+/* Mobile view */ 
+    @media (max-width: 768px) { 
+    #footer-watermark { 
+        left: 50% !important; 
+        right: auto !important; 
+        transform: translateX(-71%); 
+        text-align: center; 
+    } 
+   }
+  /* Floating abstract shapes */
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.18;
+    z-index: 0;
+  }
+
+  .shape1 { width: 300px; height: 300px; background: #a5b4fc; top: -100px; left: -100px; }
+  .shape2 { width: 200px; height: 200px; background: #fbbf24; bottom: -50px; right: -50px; }
+  .shape3 { width: 400px; height: 400px; background: #34d399; top: 50%; left: 60%; transform: translate(-50%, -50%); }
+
+  /* Cards */
+  .role-card, .form-card {
+    border-radius: 1.25rem;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    background: white;
+  }
+
+  .role-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+  }
+
+  .form-card {
+    padding: 2.5rem;
+  }
+
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px blue;
+  }
+</style>
+</head>
+<body class="relative min-h-screen flex flex-col items-center pt-16">
+
+<!-- Abstract shapes -->
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
+<!-- Header -->
+<div class="text-center z-10 mb-12 px-4">
+  <h1 class="text-6xl font-extrabold text-gray-900 mb-2">Homeless Help Hub</h1>
+  <p class="text-gray-600 text-lg max-w-2xl mx-auto">Professional platform to manage resources, donors, volunteers, and government operations with elegance and simplicity.</p>
+</div>
+
+<!-- Role Selection -->
+<div id="role-selection" class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl px-4 mb-12 z-10">
+  <div class="role-card cursor-pointer text-center p-10" onclick="selectRole('user')">
+    <div class="text-5xl mb-4">👤</div>
+    <h2 class="text-xl font-semibold text-gray-900">User</h2>
+    <p class="text-gray-500 mt-2">Request help & access resources</p>
+  </div>
+  <div class="role-card cursor-pointer text-center p-10" onclick="selectRole('donor')">
+    <div class="text-5xl mb-4">💖</div>
+    <h2 class="text-xl font-semibold text-gray-900">Donor</h2>
+    <p class="text-gray-500 mt-2">Contribute & track donations</p>
+  </div>
+  <div class="role-card cursor-pointer text-center p-10" onclick="selectRole('gov')">
+    <div class="text-5xl mb-4">🏛️</div>
+    <h2 class="text-xl font-semibold text-gray-900">Gov Employee</h2>
+    <p class="text-gray-500 mt-2">Verify requests & manage operations</p>
+  </div>
+  <div class="role-card cursor-pointer text-center p-10" onclick="selectRole('volunteer')">
+    <div class="text-5xl mb-4">🤝</div>
+    <h2 class="text-xl font-semibold text-gray-900">Volunteer</h2>
+    <p class="text-gray-500 mt-2">Assist on-ground activities</p>
+  </div>
+    <footer class="w-full text-center py-4 text-gray-700 z-10 absolute bottom-0 left-0" style="background: transparent;">
+    &copy; 2026 <span class="font-semibold">AGILE</span> - Homeless Help Hub. All rights reserved.
+  </footer>
+</div>
+
+<!-- Form Container -->
+<div class="max-w-2xl w-full px-4 z-10">
+
+  <!-- Login Form -->
+  <div id="login-form-container" class="form-card hidden mb-6">
+    <h2 id="login-title" class="text-3xl font-bold text-gray-900 text-center mb-6"></h2>
+    <form class="space-y-4">
+      <input type="email" placeholder="Email" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500" required>
+      <input type="password" placeholder="Password" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500" required>
+      <button class="w-full bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 transition">Login</button>
+    </form>
+    <p class="text-gray-500 text-center mt-4">New here? <span id="signup-link" class="text-indigo-600 font-semibold cursor-pointer hover:underline">Sign Up</span></p>
+    <p class="text-gray-400 text-center mt-2 cursor-pointer hover:underline" onclick="backToRole()">← Back</p>
+  </div>
+
+  <!-- Signup Form -->
+  <div id="signup-form-container" class="form-card hidden">
+    <h2 id="signup-title" class="text-3xl font-bold text-gray-900 text-center mb-6"></h2>
+    <form class="space-y-4">
+      <input type="text" placeholder="Full Name" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500" required>
+      <input type="email" placeholder="Email" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500" required>
+      <input type="password" placeholder="Password" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500" required>
+      <input type="password" placeholder="Confirm Password" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500" required>
+      <button class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">Sign Up</button>
+    </form>
+    <p class="text-gray-400 text-center mt-4 cursor-pointer hover:underline" onclick="backToLogin()">← Back to Login</p>
+  </div>
+</div>
+<div id="footer-watermark">
+    Crafted by Arun
+</div>
+
+<!-- LOGIN -->
+<script>
+let selectedRole = "";
+
+// --- Role selection ---
+function selectRole(role) {
+    selectedRole = role; // must match 'user','donor','gov','volunteer'
+    document.getElementById('role-selection').classList.add('hidden');
+    document.getElementById('login-form-container').classList.remove('hidden');
+
+    const roleNames = {
+        user: "User Login 👤",
+        donor: "Donor Login 💖",
+        gov: "Government Employee Login 🏛️",
+        volunteer: "Volunteer Login 🤝"
+    };
+    document.getElementById('login-title').innerText = roleNames[role];
+    document.getElementById('signup-title').innerText = `Sign Up - ${roleNames[role]}`;
+    
+}
+
+// --- Navigation ---
+function backToRole() {
+    document.getElementById('role-selection').classList.remove('hidden');
+    document.getElementById('login-form-container').classList.add('hidden');
+    document.getElementById('signup-form-container').classList.add('hidden');
+}
+function backToLogin() {
+    document.getElementById('signup-form-container').classList.add('hidden');
+    document.getElementById('login-form-container').classList.remove('hidden');
+}
+document.getElementById('signup-link').addEventListener('click', () => {
+    document.getElementById('login-form-container').classList.add('hidden');
+    document.getElementById('signup-form-container').classList.remove('hidden');
+});
+
+// --- LOGIN ---
+document.querySelector('#login-form-container form').addEventListener('submit', function(e){
+    e.preventDefault();
+    let email = this.querySelector('input[type="email"]').value;
+    let password = this.querySelector('input[type="password"]').value;
+
+    if(selectedRole === ""){
+        alert("Please select a role first!");
+        return;
+    }
+
+    fetch('auth.php', {
+        method: 'POST',
+        body: new URLSearchParams({
+            action: 'login',
+            role: selectedRole,
+            email: email,
+            password: password
+        }),
+        credentials: 'include' // ✅ include cookies to persist PHP session
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.status === 'success'){
+            // Redirect based on role
+            switch(data.role){
+                case 'user': window.location.href = 'user_dashboard.php'; break;
+                case 'donor': window.location.href = 'donor_dashboard.php'; break;
+                case 'gov': window.location.href = 'gov_dashboard.php'; break;
+                case 'volunteer': window.location.href = 'volunteer_dashboard.php'; break;
+                default: alert("Unknown role"); break;
+            }
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(err => alert("Network or server error: " + err));
+});
+
+// --- SIGNUP ---
+document.querySelector('#signup-form-container form').addEventListener('submit', function(e){
+    e.preventDefault();
+    let fullname = this.querySelector('input[placeholder="Full Name"]').value;
+    let email = this.querySelector('input[type="email"]').value;
+    let password = this.querySelector('input[placeholder="Password"]').value;
+    let confirmPassword = this.querySelector('input[placeholder="Confirm Password"]').value;
+
+    if(password !== confirmPassword){
+        alert("Passwords do not match!");
+        return;
+    }
+
+    if(selectedRole === ""){
+        alert("Please select a role first!");
+        return;
+    }
+
+    fetch('auth.php', {
+        method: 'POST',
+        body: new URLSearchParams({
+            action: 'signup',
+            role: selectedRole,
+            fullname: fullname,
+            email: email,
+            password: password
+        }),
+        credentials: 'include' // ✅ include cookies to persist PHP session
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        if(data.status === 'success') backToLogin();
+    })
+    .catch(err => alert("Network or server error: " + err));
+});
+   const form = document.querySelector("#loginForm");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  
+  try {
+    const res = await fetch("login.php", {
+      method: "POST",
+      body: formData
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      window.location.href = data.redirect;
+    } else {
+      alert(data.message);
+    }
+  } catch (err) {
+    alert("Network or server error. Please try again later.");
+    console.error(err);
+  }
+});
+
+</script>
+</body>
+</html>
