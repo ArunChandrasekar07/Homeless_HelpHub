@@ -1,7 +1,4 @@
 <div align="center">
-
-<img src="./assets/logo.png" alt="Homeless Help Hub Logo" width="100"/>
-
 # 🏠 Homeless Help Hub
 
 ### Role-Based Welfare Coordination & Support Platform
