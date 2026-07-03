@@ -1,4 +1,5 @@
 <div align="center">
+
 # 🏠 Homeless Help Hub
 
 ### Role-Based Welfare Coordination & Support Platform
