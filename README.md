@@ -1,7 +1,20 @@
 <div align="center">
 
+<img src="./assets/logo.png" alt="Homeless Help Hub Logo" width="100"/>
+
 # 🏠 Homeless Help Hub
-### Smart Welfare Coordination Platform with Role-Based Access Control
+
+### Role-Based Welfare Coordination & Support Platform
+
+**Production-grade full-stack platform connecting vulnerable communities with volunteers, donors, and government authorities.**
+
+Built from scratch — applying **role-based workflow orchestration** to solve real-world support distribution problems.
+
+<br/>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=18&duration=2600&pause=900&color=22C55E&center=true&vCenter=true&width=900&lines=Role-Based+Access+Control;Government+Verification;Volunteer+Coordination;Transparent+Donation+Workflow" />
+
+<br/><br/>
 
 [![Live](https://img.shields.io/badge/Live-Homeless%20Help%20Hub-22c55e?style=for-the-badge&logo=googlechrome&logoColor=white)](https://homelesshelphub.infinityfree.me/)
 [![PHP](https://img.shields.io/badge/PHP-8.0+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
@@ -9,170 +22,125 @@
 [![Tailwind](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-**A production-grade full-stack platform connecting vulnerable communities with volunteers, donors, and government authorities through verified support workflows.**
+<br/>
 
-[🔍 Problem](#-problem-statement) • [⚙ Workflow](#-request-workflow) • [🏗 Architecture](#-system-architecture) • [🚀 Quick Overview](#-key-features)
-
----
+[👥 Roles](#-role-system) • [🏗 Architecture](#-architecture) • [⚡ Quick Start](#-quick-start) • [📊 Workflow](#-request-workflow)
 
 </div>
 
-## ✦ Problem Statement
+---
 
-In welfare systems, help often fails to reach people because of:
+# 🧠 The Problem
 
-| Problem | Impact |
-|---------|--------|
-| Fake requests | Resources are misused |
-| Manual verification | Slow approvals |
-| Poor coordination | Delayed assistance |
-| Lack of transparency | Donor trust decreases |
+In real-world welfare systems, people in need often struggle to receive timely support due to:
 
-This leads to **inefficient and unreliable support delivery**.
+| Issue | Description |
+|---|---|
+| Fake Requests | Resources may be misused |
+| Slow Verification | Help gets delayed |
+| Poor Coordination | Volunteers and donors lack visibility |
+| Low Transparency | Trust decreases across stakeholders |
 
-Homeless Help Hub solves this by creating a **structured multi-role workflow** where every request is verified, assigned, tracked, and completed transparently.
+This project solves these issues using a **multi-role approval workflow** with verification, assignment, and progress tracking.
 
 ---
 
-## ✦ What This Platform Solves
+# 📈 System Metrics
 
-The platform creates a verified workflow:
+| Metric | Value |
+|---|---:|
+| Architecture | Role-Based |
+| User Roles | 4 |
+| Verification Layer | Government Approval |
+| Request Tracking | Real-Time |
+| Donation Transparency | Yes |
+| Workflow Automation | Yes |
+
+---
+
+# ⚙️ Role System
+
+## Multi-Role Workflow
+
+Every actor in the system has a defined responsibility.
 
 ```text
-User Request
-    ↓
-Government Verification
-    ↓
-Volunteer Assignment
-    ↓
-Donor Contribution
-    ↓
-Support Delivery
+User submits request
+        ↓
+Government verifies request
+        ↓
+Volunteer accepts task
+        ↓
+Donor contributes support
+        ↓
+Request completed
 ```
 
-Each step ensures:
-- Identity verification  
-- Role-based accountability  
-- Transparent progress tracking  
-- Faster support delivery  
+This guarantees structured and accountable welfare delivery.
 
 ---
 
-## ✦ Key Features
+# 👥 Dashboards
 
-### 👤 User Dashboard
-- Submit verified help requests
-- Upload proof / documents
-- Track request status
-- View assigned volunteer details
+## 👤 User Dashboard
+- Submit support requests
+- Upload identity/proof
+- Track request progress
+- View assigned volunteer
 
-### 🧑‍🤝‍🧑 Volunteer Dashboard
+## 🧑‍🤝‍🧑 Volunteer Dashboard
 - Browse approved requests
 - Accept assignments
-- Update request progress
-- Mark completion status
+- Update progress
+- Mark completion
 
-### 🏛 Government Officer Dashboard
-- Verify submitted proof
+## 🏛 Government Officer Dashboard
+- Verify documents
 - Approve / reject requests
-- Assign volunteers region-wise
-- Monitor workflow accountability
+- Assign volunteers
+- Monitor accountability
 
-### 💳 Donor Dashboard
+## 💳 Donor Dashboard
 - Donate to verified requests
-- View donation history
-- Track impact and request progress
+- Track donation history
+- View impact
 
 ---
 
-## ✦ Request Workflow
-
-```mermaid
-flowchart LR
-    A[👤 User submits request]
-    --> B[🏛 Government verification]
-
-    B -->|Approved| C[🧑‍🤝‍🧑 Volunteer assigned]
-    B -->|Rejected| X[❌ Closed]
-
-    C --> D[💳 Donor contributes]
-    D --> E[📦 Support delivered]
-    E --> F[✅ Request completed]
-```
-
----
-
-## ✦ Core Architecture
+# 🏗 Architecture
 
 ```text
-┌───────────────────────────┐
-│ Frontend UI               │
-│ HTML • Tailwind • Bootstrap│
-└──────────────┬────────────┘
+User / Volunteer / Donor / Officer
                │
                ▼
-┌───────────────────────────┐
-│ PHP Backend Logic         │
-│ Auth • Routing • Workflow │
-└──────────────┬────────────┘
+Frontend (HTML + Tailwind + Bootstrap)
                │
                ▼
-┌───────────────────────────┐
-│ Role Access Layer         │
-│ User / Volunteer / Donor  │
-│ Government Officer        │
-└──────────────┬────────────┘
+PHP Backend
+(Auth + Business Logic)
                │
                ▼
-┌───────────────────────────┐
-│ MySQL Database            │
-│ Requests • Users • Status │
-└───────────────────────────┘
+Role Access Layer
+(RBAC + Workflow Engine)
+               │
+               ▼
+MySQL Database
+(Users, Requests, Donations)
 ```
 
 ---
 
-## ✦ System Design
+# 📂 Project Structure
 
-This platform uses **Role-Based Access Control (RBAC)**.
-
-Supported roles:
-
-| Role | Responsibility |
-|------|----------------|
-| User | Raise support requests |
-| Volunteer | Provide assistance |
-| Donor | Financial contribution |
-| Government Officer | Verification & approval |
-
-This ensures secure access and controlled workflow execution.
-
----
-
-## ✦ Tech Stack
-
-<div align="center">
-
-| Layer | Technology |
-|-------|------------|
-| Frontend | HTML5 · Tailwind CSS · Bootstrap |
-| Backend | PHP |
-| Database | MySQL |
-| Concepts | RBAC · Approval Workflow · Assignment Engine |
-
-</div>
-
----
-
-## ✦ Project Structure
-
-```bash
+```text
 Homeless_HelpHub/
+│
 ├── index.html
 ├── auth.php
 ├── db.php
 ├── login.php
 ├── logout.php
+│
 ├── submit_request.php
 ├── edit_request.php
 ├── approve_request.php
@@ -180,6 +148,7 @@ Homeless_HelpHub/
 ├── update_assignment.php
 ├── donate_request.php
 ├── add_feedback.php
+│
 ├── user_dashboard.php
 ├── volunteer_dashboard.php
 ├── donor_dashboard.php
@@ -188,41 +157,109 @@ Homeless_HelpHub/
 
 ---
 
-## ✦ Future Improvements
+# 📊 Request Workflow
 
-- [ ] Payment gateway integration  
-- [ ] Real-time notifications  
-- [ ] Geo-location support  
-- [ ] AI fraud detection  
-- [ ] Mobile application  
-- [ ] Admin analytics dashboard  
+```text
+User submits request
+        │
+        ▼
+Document Verification
+(Government Officer)
+        │
+        ├── REJECT → Close request
+        │
+        └── APPROVE
+              │
+              ▼
+Volunteer Assignment
+              │
+              ▼
+Donation Support
+              │
+              ▼
+Request Completed
+```
 
 ---
 
-## ✦ Real-World Use Cases
+# 🆚 Why This Architecture?
 
-This architecture can scale for:
+| Approach | Secure | Scalable | Transparent |
+|---|---|---|---|
+| Basic Donation Portal | ❌ | ⚠️ | ❌ |
+| NGO Manual Process | ⚠️ | ❌ | ⚠️ |
+| **Homeless Help Hub** | ✅ | ✅ | ✅ |
 
-- NGO operations  
-- Disaster relief systems  
-- Rural welfare programs  
-- Government aid distribution  
-- Community support networks  
+Role-based architecture improves accountability and reduces misuse.
 
 ---
 
-## ✦ Creator
+# ⚡ Quick Start
+
+### Prerequisites
+
+- XAMPP / WAMP  
+- PHP 8+  
+- MySQL 8+  
+- phpMyAdmin  
+
+---
+
+### Setup
+
+```bash
+git clone https://github.com/ArunChandrasekar07/Homeless_HelpHub.git
+```
+
+```bash
+# Move project to server root
+cp -r Homeless_HelpHub /xampp/htdocs/
+```
+
+```bash
+# Configure database credentials
+db.php
+```
+
+```bash
+# Run project
+http://localhost/Homeless_HelpHub/
+```
+
+---
+
+# 🗄 Database Modules
+
+Main entities:
+
+```text
+Users
+Requests
+Volunteers
+Donors
+Officers
+Assignments
+Donations
+Feedback
+```
+
+These modules power the full support lifecycle.
+
+---
+
+# 👨‍💻 Author
 
 <div align="center">
 
-### Arun Chandrasekar
+## Arun Chandrasekar
 
+AI Engineer • Backend Engineer  
 Integrated M.Tech Software Engineering — VIT Vellore
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-arunc.vercel.app-black?style=for-the-badge&logo=vercel)](https://arunc.vercel.app)
 [![GitHub](https://img.shields.io/badge/GitHub-ArunChandrasekar07-181717?style=for-the-badge&logo=github)](https://github.com/ArunChandrasekar07)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-arunchandrasekar1-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/arunchandrasekar1)
 
-*Built to create social impact through technology.*
+*Built to create social impact through production-grade engineering.*
 
 </div>
